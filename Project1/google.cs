@@ -21,7 +21,7 @@ namespace Project1
         [Fact]
         public void Can_Google_From_Warsow()
         {
-           browser.Navigate().GoToUrl("https://googl.com");
+            browser.Navigate().GoToUrl("https://googl.com");
             var queryBox = browser.FindElement(By.CssSelector(".gLFyf"));
             queryBox.SendKeys("pogoda warszawa");
             queryBox.Submit();
@@ -36,5 +36,37 @@ namespace Project1
         }
 
     }
-}
 
+    public class Automatyzacja : IDisposable
+    {
+
+        IWebDriver browser;
+        public Automatyzacja()
+        {
+            browser = new ChromeDriver();
+        }
+
+        [Fact]
+        public void Can_Google_From_Warsow()
+        {
+            browser.Navigate().GoToUrl("http://automatyzacja.benedykt.net/");
+            var queryBox = browser.FindElement(By.CssSelector(".entry-title"));
+            var link = queryBox.FindElement(By.TagName("a"));
+            link.Click();
+            var queryBoxComment = browser.FindElement(By.Id("comment"));
+            queryBoxComment.Click();
+            queryBoxComment.SendKeys("test123");
+            var queryBoxAuthor = browser.FindElement(By.Id("author"));
+            queryBoxAuthor.SendKeys("bialy");
+            var queryBoxEmail = browser.FindElement(By.Id("email"));
+            queryBoxEmail.SendKeys("warto@automatyzowac.wp.pl");
+            var queryBoxComent = browser.FindElement(By.Id("submit"));
+            queryBoxComent.Click();
+        }
+
+        public void Dispose()
+        {
+            browser.Quit();
+        }
+    }
+}
