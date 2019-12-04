@@ -18,7 +18,6 @@ namespace Project1
         {
             browser = new ChromeDriver();
         }
-
         [Fact]
         public void Can_Google_From_Warsow()
         {
@@ -30,8 +29,6 @@ namespace Project1
 
             Assert.Equal("3", result.Text);
         }
-
-
         [Fact]
         public void Can_add_new_comment()
         {
@@ -60,15 +57,12 @@ namespace Project1
 
             Assert.Single(myComments);
         }
-
         private void MoveToElement(IWebElement element)
         {
             Actions builder = new Actions(browser);
             Actions moveTo = builder.MoveToElement(element);
             moveTo.Build().Perform();
-
         }
-
         public void Dispose()
         {
             browser.Quit();
