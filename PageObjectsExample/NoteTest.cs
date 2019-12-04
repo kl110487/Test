@@ -14,8 +14,12 @@ namespace PageObjectsExample
         {
             var loginPage = LoginPage.Open(GetBrowser());
             var adminPage = loginPage.Login();
-            var AdminPage = adminPage.AddNot();
-          
+            var note = new ExampleNote();
+            var AdminPage = adminPage.AddNot(note);
+            var NotePage = new NotePage(GetBrowser());
+            NotePage.GoTo(AdminPage);
+
+            Assert.True(NotePage.HasNot(note));
         }
     }
 }

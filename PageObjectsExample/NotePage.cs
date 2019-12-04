@@ -1,6 +1,8 @@
 ﻿
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Linq;
 
 namespace PageObjectsExample
@@ -30,6 +32,20 @@ namespace PageObjectsExample
             return new NotePage( _browser);
         }
 
+        internal bool HasNot(ExampleNote note)
+        {
+            WaitForClickable(By.CssSelector("entry-title"), 5);
+                var x = _browser.FindElement(By.CssSelector("entry-title"));
+                var y = _browser.FindElement(By.CssSelector("entry-content > p"));
+
+            return x.Text == note.Title && y.Text == note.Content;
+        }
+
+        internal void GoTo(string adminPage)
+        {
+            _browser.Navigate().GoToUrl(adminPage);
+        }
+
         internal bool Has(ExamleComment exampleCommment)
         {
             var comments = _browser.FindElements(By.CssSelector("article.comment-body"));
@@ -44,6 +60,16 @@ namespace PageObjectsExample
             Actions builder = new Actions(_browser);
             Actions moveTo = builder.MoveToElement(element);
             moveTo.Build().Perform();
+        }
+        internal void WaitForClickable(By by, int seconds)
+        {
+            var wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(seconds));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(by));
+        }
+        internal void WaitForClickable(IWebElement element, int seconds)
+        {
+            var wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(seconds));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
         }
     }
 

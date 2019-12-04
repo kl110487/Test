@@ -38,6 +38,9 @@
     <Reference Include="Faker.NET47, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Faker.Net.1.1.1\lib\net471\Faker.NET47.dll</HintPath>
     </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -65,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminPage.cs" />
+    <Compile Include="ExampleNote.cs" />
     <Compile Include="LoginPage.cs" />
     <Compile Include="BaseTest.cs" />
     <Compile Include="CommentTests.cs" />
