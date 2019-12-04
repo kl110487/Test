@@ -64,11 +64,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPage.cs" />
+    <Compile Include="LoginPage.cs" />
+    <Compile Include="BaseTest.cs" />
     <Compile Include="CommentTests.cs" />
     <Compile Include="DriverFactory.cs" />
     <Compile Include="ExamleComment.cs" />
     <Compile Include="MainPage.cs" />
     <Compile Include="NotePage.cs" />
+    <Compile Include="NoteTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
