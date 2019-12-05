@@ -34,9 +34,9 @@ namespace PageObjectsExample
 
         internal bool HasNot(ExampleNote note)
         {
-            WaitForClickable(By.CssSelector("entry-title"), 5);
-                var x = _browser.FindElement(By.CssSelector("entry-title"));
-                var y = _browser.FindElement(By.CssSelector("entry-content > p"));
+            WaitForClickable(By.CssSelector(".entry-title"), 5);
+                var x = _browser.FindElement(By.CssSelector(".entry-title"));
+                var y = _browser.FindElement(By.CssSelector(".entry-content > p"));
 
             return x.Text == note.Title && y.Text == note.Content;
         }
